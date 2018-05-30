@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>South Korean</title>
+
+	<!-- Offline.js -->
+	<script src="http://github.hubspot.com/offline/offline.min.js"></script>
+	<link rel="stylesheet" href="css/offline-theme-default.css" />
+	<link rel="stylesheet" href="css/offline-language-english.css" />
+	<link rel="icon" href="img/icon.png"/>
+	<script>
+		Offline.options = {
+			game: false,
+			checks: {
+				image: {
+					url: function() { return 'img/icon.png' + (Math.floor(Math.random() * 1000000000)); }
+				},
+				active: 'image'
+			}
+		}
+		var run = function(){
+		 	if (Offline.state === 'up') {
+				Offline.check();
+		 	}
+		}
+		setInterval(run, 5000);	 
+	</script>
+
+	<!-- JQuery (local copy so that jQuery can still be used without an internet connection) -->
+	<script src="js/jquery-1.11.3.min.js"></script>
+
+	<!-- Bootstrap Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<!-- Bootstrap Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+	<!-- Google Font -->
+	<link href="http://fonts.googleapis.com/css?family=Lato:100,300" rel="stylesheet">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+	<!-- Custom style -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Knockout -->
+	<script type='text/javascript' src='js/knockout-3.3.0.js'></script>
+
+	<!-- Google Maps API -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCupomo2J8EtSH1h9rOYVUXT05KAkL8bD4&callback=initMap"></script>
+</head>
+<body>
+
+	<!-- Google Map -->
+	<div id="map-canvas"></div>
+
+	<!-- Main Content -->
+	<div class="wrap">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-md-12 error-message">
+				</div>
+			</div>
+
+			<div class="row search-area">
+
+				<!-- Search Bar -->
+				<div class="col-xs-6 col-sm-4">
+					<h2><span><input data-bind="textInput: searchString"></span></h2>
+					<ul class="list" data-bind="foreach: locations">
+						<li class="listElement"><h5> <div data-bind="text: title, click: reveal"></h5></li>
+					</ul>
+				</div>
+				<div class="col-xs-6 col-sm-8"></div>
+			</div>
+		</div>
+	</div>
+
+	
+	<!-- Main App Functionality -->
+	<script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
